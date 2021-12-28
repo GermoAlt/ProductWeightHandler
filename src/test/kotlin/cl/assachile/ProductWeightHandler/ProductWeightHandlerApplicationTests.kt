@@ -1,4 +1,4 @@
-package cl.assachile.ProductWeightHandler
+package cl.assachile.productWeightHandler
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

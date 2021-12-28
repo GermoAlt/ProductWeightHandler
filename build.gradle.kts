@@ -9,8 +9,8 @@ plugins {
 }
 
 group = "cl.assachile"
-version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_17
+version = "1.0.0-SNAPSHOT"
+java.sourceCompatibility = JavaVersion.VERSION_11
 
 configurations {
 	compileOnly {
@@ -31,6 +31,14 @@ dependencies {
 	runtimeOnly("mysql:mysql-connector-java")
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+	//APACHE POI -> EXCEL FILES
+	implementation("org.apache.poi:poi:5.1.0")
+	implementation("org.apache.poi:poi-ooxml:5.1.0")
+
+	//JAVAMAIL
+	implementation("com.sun.mail:javax.mail:1.6.2")
+
 }
 
 tasks.withType<KotlinCompile> {
