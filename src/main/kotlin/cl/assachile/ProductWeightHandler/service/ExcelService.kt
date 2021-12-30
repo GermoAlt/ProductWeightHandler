@@ -35,7 +35,8 @@ class ExcelService(private var productRepository: ProductRepository): Initializi
                         LocalDate.parse(row.getCell(8).stringCellValue, DateTimeFormatter.ofPattern("dd/MM/yyyy")),
                         row.getCell(3).numericCellValue.toInt().toString(),
                         row.getCell(4).numericCellValue.toInt().toString(),
-                        LocalDate.parse(row.getCell(10).stringCellValue, DateTimeFormatter.ofPattern("dd/MM/yy"))
+                        LocalDate.parse(row.getCell(10).stringCellValue, DateTimeFormatter.ofPattern("dd/MM/yy")),
+                        row.getCell(5).numericCellValue
                     )
                 )
             }

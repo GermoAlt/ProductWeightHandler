@@ -36,3 +36,4 @@ out/
 ### VS Code ###
 .vscode/
 /src/main/kotlin/cl/assachile/productWeightHandler/files/product-info.xlsx
+/src/main/kotlin/cl/assachile/productWeightHandler/files/~$product-info.xlsx
