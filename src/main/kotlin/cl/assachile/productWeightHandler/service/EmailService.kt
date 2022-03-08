@@ -1,12 +1,11 @@
 package cl.assachile.productWeightHandler.service
 
+import cl.assachile.productWeightHandler.parser.Supplier
 import com.sun.mail.imap.IdleManager
 import org.springframework.beans.factory.InitializingBean
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
-import java.io.File
 import java.io.IOException
-import java.nio.file.Paths
 import java.util.*
 import java.util.concurrent.Executors
 import javax.mail.*
@@ -29,8 +28,6 @@ class EmailService(
 
     var messages: Array<Message> = arrayOf()
     var idleManager: IdleManager? = null
-
-
 
     override fun afterPropertiesSet() {
         connectToEmailServer()
@@ -64,7 +61,7 @@ class EmailService(
                             " got " + msgs.size + " new messages"
                 )
                 if(msgs[0].contentType.contains("multipart")){
-                    downloadAttachments(msgs[0])
+                    handleAttachments(msgs[0])
                 }
                 try {
                     // process new messages
@@ -77,17 +74,18 @@ class EmailService(
     }
 
     @Throws(IOException::class, MessagingException::class)
-    fun downloadAttachments(message: Message){
+    fun handleAttachments(message: Message){
         val multiPart = message.content as Multipart
         val numberOfParts = multiPart.count
         for (partCount in 0 until numberOfParts) {
             val part = multiPart.getBodyPart(partCount) as MimeBodyPart
             if (Part.ATTACHMENT.equals(part.disposition, true)) {
-                val downloadDirectory = Paths.get("").toAbsolutePath().toString() + "\\src\\main\\kotlin\\cl\\assachile\\productWeightHandler\\files"
-                part.saveFile(downloadDirectory + File.separator.toString() + "product-info.xlsx")
+                excelService.parseExcel(part.inputStream, getSupplier(message))
             }
         }
-        excelService.parseExcel()
     }
 
+    fun getSupplier(message: Message): Supplier {
+        return Supplier.GUARANI
+    }
 }

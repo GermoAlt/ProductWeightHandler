@@ -16,8 +16,6 @@ open class Product(
     open var boxNumber: String,
     open var amount: String,
     open var bestBefore: LocalDate,
-    open var weight: Double
-) {
-
-
-}
+    open var weight: Double,
+    open var transactionNumber: Double
+)
