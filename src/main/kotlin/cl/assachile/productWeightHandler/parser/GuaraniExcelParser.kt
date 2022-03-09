@@ -33,6 +33,7 @@ class GuaraniExcelParser(override var productRepository: ProductRepository) : Ex
                 )
             }
         }
+        productRepository.deleteProductsByDateAddedBefore(LocalDate.now())
         productRepository.saveAll(productList)
     }
 }

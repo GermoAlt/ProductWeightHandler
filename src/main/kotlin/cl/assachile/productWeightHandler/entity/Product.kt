@@ -17,5 +17,6 @@ open class Product(
     open var amount: String,
     open var bestBefore: LocalDate,
     open var weight: Double,
-    open var transactionNumber: Double
+    open var transactionNumber: Double,
+    open var dateAdded: LocalDate = LocalDate.now()
 )
