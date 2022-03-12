@@ -11,6 +11,7 @@ import java.io.InputStream
 @Service
 class ExcelService(private var productRepository: ProductRepository): InitializingBean{
     fun parseExcel(file:InputStream, supplier: Supplier) {
+        println("Parsing new excel...")
         getParser(supplier).parse(file)
     }
 
