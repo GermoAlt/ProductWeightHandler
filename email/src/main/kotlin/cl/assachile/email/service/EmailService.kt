@@ -67,7 +67,7 @@ class EmailService(
                     // process new messages
                     idleManager!!.watch(folder) // keep watching for new messages
                 } catch (mex: MessagingException) {
-                    // handle exception related to the Folder
+                    connectToEmailServer()
                 }
             }
         })
@@ -79,7 +79,7 @@ class EmailService(
         val numberOfParts = multiPart.count
         for (partCount in 0 until numberOfParts) {
             val part = multiPart.getBodyPart(partCount) as MimeBodyPart
-            if (Part.ATTACHMENT.equals(part.disposition, true)) {
+            if (Part.ATTACHMENT.equals(part.disposition, true) && part.fileName.endsWith(".xlsx")) {
                 excelService.parseExcel(part.inputStream, getSupplier(message))
             }
         }
