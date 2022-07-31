@@ -35,11 +35,3 @@ out/
 
 ### VS Code ###
 .vscode/
-/web/src/main/kotlin/cl/assachile/productWeightHandler/files/product-info.xlsx
-/web/src/main/kotlin/cl/assachile/productWeightHandler/files/~$product-info.xlsx
-
-email/gradle/wrapper/
-
-email/gradlew
-
-email/gradlew.bat

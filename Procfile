@@ -1,2 +1,2 @@
-web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/*.jar
-worker: java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/*.jar
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar web/build/libs/*.jar
+worker: java -jar email/build/libs/*.jar
